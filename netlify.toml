@@ -1,0 +1,13 @@
+# Netlify：直接发布已构建的 dist/，无需构建命令。
+# 页面缺失时，Netlify 会自动使用 dist/404.html。
+[build]
+  publish = "dist"
+
+# 兜底响应头；同名规则以 dist/_headers 为准。
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
